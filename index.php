@@ -21,8 +21,22 @@ $products = get_products_by_category($cat_id);
 // Sample data
 $product_name = 'Fender Telecaster';
 
-// Delete the product and display an appropriate messge
-$delete_message = "No rows were deleted.";
+// Get the product by name
+$product = get_product_by_name($product_name);
+
+// Delete the product and display an appropriate message
+if ($product) {
+    $product_id = $product['productID'];
+    $row_count = delete_product($product_id);
+
+    if ($row_count) {
+        $delete_message = "Product was deleted successfully.";
+    } else {
+        $delete_message = "No rows were deleted.";
+    }
+} else {
+    $delete_message = "No rows were deleted.";
+}
 
 /***************************************
  * Insert a product
