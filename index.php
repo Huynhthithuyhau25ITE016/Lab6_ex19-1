@@ -34,11 +34,24 @@ $code = 'tele';
 $name = 'Fender Telecaster';
 $description = 'NA';
 $price = '949.99';
+$discount_percent = 0;
 
 // Insert the data
+$product_id = add_product(
+    $category_id,
+    $code,
+    $name,
+    $description,
+    $price,
+    $discount_percent
+);
 
 // Display an appropriate message
-$insert_message = "No rows were inserted.";
+if ($product_id != false) {
+    $insert_message = "Product was inserted successfully.";
+} else {
+    $insert_message = "No rows were inserted.";
+}
 
 include 'home.php';
 ?>
